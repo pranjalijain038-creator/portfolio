@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pranjali Jain | Personal Portfolio</title>
+    <meta
+      name="description"
+      content="Personal portfolio website for Pranjali Jain, a B.Tech Computer Science Engineering student at JECRC University, with project search, theme toggle, and an API-based chatbot."
+    />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("portfolio-theme");
+          var theme =
+            saved === "light" || saved === "dark"
+              ? saved
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-bg" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="logo" href="#home" id="logo-name">Pranjali Jain</a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="visually-hidden">Menu</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+        <nav aria-label="Primary">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#chatbot">AI Chatbot</a></li>
+          </ul>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+            <span data-theme-icon>Dark</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">B.Tech Computer Science Engineering</p>
+            <h1 id="hero-name">Pranjali Jain</h1>
+            <p class="lead" id="hero-tagline">Learning, Building, and Growing Through Code.</p>
+            <p class="lead" id="hero-intro"></p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">View My Projects</a>
+              <a class="btn btn-secondary" href="#contact">Contact Me</a>
+              <a class="btn btn-secondary" id="github-hero" hidden href="#" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+            </div>
+          </div>
+          <figure class="portrait-card">
+            <img id="profile-photo" src="assets/avatar.svg" alt="Monogram initials PJ for Pranjali Jain" />
+            <figcaption class="portrait-caption">
+              Profile photograph placeholder. Add your own image path in <code>shared/portfolio.js</code>.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section alt" id="about">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">About Me</p>
+            <h2>A student building a strong technical foundation</h2>
+            <p id="about-copy"></p>
+          </div>
+          <ul class="chips" id="interest-list"></ul>
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">Education</p>
+            <h2>Academic background</h2>
+            <p class="muted">Only confirmed course details are listed. Graduation year and extra academic records are not included because they were not provided.</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <p class="eyebrow">Degree</p>
+              <h3 id="degree-value">B.Tech in Computer Science Engineering</h3>
+            </article>
+            <article class="card">
+              <p class="eyebrow">University</p>
+              <h3 id="university-value">JECRC University</h3>
+            </article>
+            <article class="card">
+              <p class="eyebrow">Academic level</p>
+              <h3 id="academic-value">Second year · Subject to verification</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="skills">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">Skills</p>
+            <h2>Technologies I am learning</h2>
+            <p class="muted">These are suggested skill areas from coursework and this project. Levels are honest: Learning or Familiar, not expert claims.</p>
+          </div>
+          <div class="skill-grid" id="skill-grid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">Projects</p>
+            <h2>My Projects</h2>
+            <p class="muted">Five required academic projects. Search by title, description, or technology. Repository and live links appear only after they are added to the configuration file.</p>
+          </div>
+          <div class="search-bar">
+            <label class="visually-hidden" for="project-search">Search projects</label>
+            <input id="project-search" type="search" placeholder="Search projects, for example Python, Quiz, Book, or Cursor AI" autocomplete="off" />
+            <button class="btn btn-secondary" id="clear-search" type="button">Clear search</button>
+          </div>
+          <p class="muted" id="search-status" aria-live="polite">5 projects shown</p>
+          <div class="project-grid" id="project-grid"></div>
+          <p class="empty-state" id="no-projects">No projects found</p>
+        </div>
+      </section>
+
+      <section class="section alt" id="contact">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">Contact</p>
+            <h2>Get in touch</h2>
+            <p class="muted">Contact details are read from the central configuration file. Missing values are not replaced with fake addresses.</p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-card" id="contact-details"></div>
+            <div class="contact-card">
+              <h3>Start a conversation</h3>
+              <p class="muted">Use the button below after your email is configured, or ask the chatbot about the portfolio.</p>
+              <p><a class="btn btn-primary" id="contact-button" href="#contact">Contact</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="chatbot">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">AI Chatbot</p>
+            <h2>Ask about this portfolio</h2>
+            <p class="muted">Questions are sent to a server-side API route so API keys stay off the public page. If no provider key is configured, the site uses grounded local answers from the same portfolio data.</p>
+          </div>
+          <div class="chat-shell">
+            <div class="chat-header">
+              <strong>Portfolio assistant</strong>
+              <p class="muted" style="margin: 0.3rem 0 0">Press Enter to send. Example: What projects have you completed?</p>
+            </div>
+            <div class="chat-log" id="chat-log" aria-live="polite"></div>
+            <p class="status-line" id="chat-status"></p>
+            <form class="chat-form" id="chat-form">
+              <label class="visually-hidden" for="chat-input">Message</label>
+              <input id="chat-input" name="message" maxlength="1000" placeholder="Ask a question about skills, education, or projects" autocomplete="off" />
+              <button class="btn btn-primary" id="chat-send" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Personal portfolio of <span id="footer-name">Pranjali Jain</span> for the college internal assessment: Personal Portfolio Website with API-Based Chatbot Integration.</p>
+      </div>
+    </footer>
+    <style>
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

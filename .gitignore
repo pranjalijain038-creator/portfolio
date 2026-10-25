@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+node_modules/
+.env
+.env.local
+.env.*.local
+.vercel
+.output
+dist/
+*.log
+npm-debug.log*
+.idea/
+.vscode/
+*.pem
+secrets/

@@ -1,0 +1,12 @@
+{
+  "name": "pranjali-jain-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal portfolio website with API-based chatbot integration for Pranjali Jain.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "test": "node tests/search.test.mjs && node tests/chat-local.test.mjs"
+  }
+}

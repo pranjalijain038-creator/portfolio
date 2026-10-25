@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="avatarTitle avatarDesc">
+  <title id="avatarTitle">Pranjali Jain monogram</title>
+  <desc id="avatarDesc">Abstract initials PJ on a gradient background. Replace this file with a real photograph in site configuration if desired.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4e89"/>
+      <stop offset="55%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#115e59"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="48" fill="url(#bg)"/>
+  <circle cx="250" cy="54" r="70" fill="#ffffff" opacity="0.08"/>
+  <circle cx="40" cy="250" r="90" fill="#000000" opacity="0.12"/>
+  <text x="160" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="110" font-weight="600" fill="#f8fafc">PJ</text>
+</svg>
